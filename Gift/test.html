@@ -1,50 +1,121 @@
 <!DOCTYPE>
 <html>
 <head>
-	<h1> Happy Birthday </h1>
 <style type="text/css">
-div img {
+#mainframe div > img {
 	width: 100px;
 	height: 100px;
+	position: absolute;
+}
+#mainframe {
+	width: 700px;
+	height: 700px;
+}
+.hide {
+	display: none;
+}
+#mainframe h1 img {
+  transform: translate(513px,376px);
+}
+#smiley1 img {
+  transform: translate(593px,-53px);
+}
+
+#smiley2 img {
+  transform: translate(382px,-11px);
+}
+#smiley3 img {
+  transform: translate(276px,136px);
+}
+#smiley4 img {
+  transform: translate(276px,296px);
+}
+#smiley5 img {
+  transform: translate(382px,433px);
+}
+#smiley6 img {
+  transform: translate(593px,491px);
+}
+#smiley7 img {
+transform: translate(791px,433px);
+}
+#smiley8 img {
+  transform: translate(926px,296px);
+}
+#smiley9 img {
+  transform: translate(926px,136px);
+}
+#smiley10 img {
+  transform: translate(805px,-11px);
 }
 </style>
 </head>
 <body>
+<div id='mainframe'>
+<h1>
+ <img src="hpybdy.gif">
+</h1>
 <div id='smiley1'>
- <img id='smile_emo' src="aankh_maare.jpeg">
- <img id='sgr_emo' src="aankh-maare_sgr.PNG">
+ <img class='smile_emo' src="aankh_maare.jpeg">
+ <img class='sgr_emo hide' src="aankh-maare_sgr.png">
 </div>
 <div id='smiley2'>
- <img id='smile_emo' src="coffee.PNG">
- <img id='sgr_emo' src="coffee_sgr.jpg">
+ <img class='smile_emo' src="coffee.png">
+ <img class='sgr_emo hide' src="coffee_sgr.jpg">
 </div>
 <div id='smiley3'>
- <img id='smile_emo' src="eyes_open_smile.jpeg">
- <img id='sgr_emo' src="eyes_open_smile_sgr.PNG">
+ <img class='smile_emo' src="eyes_open_smile.jpeg">
+ <img class='sgr_emo hide' src="eyes_open_smile_sgr.png">
 </div>
 <div id='smiley4'>
- <img id='smile_emo' src="modhu_khullu.jpeg">
- <img id='sgr_emo' src="modhu_khullu_sgr.PNG">
+ <img class='smile_emo' src="modhu_khullu.jpeg">
+ <img class='sgr_emo hide' src="modhu_khullu_sgr.png">
 </div>
 <div id='smiley5'>
- <img id='smile_emo' src="nerd.jpeg">
- <img id='sgr_emo' src="nerd_sgr.jpg">
+ <img class='smile_emo' src="nerd.jpeg">
+ <img class='sgr_emo hide' src="nerd_sgr.jpg">
 </div>
 <div id='smiley6'>
- <img id='smile_emo' src="sad.jpeg">
- <img id='sgr_emo' src="sad_sgr.PNG">
+ <img class='smile_emo' src="sad.jpeg">
+ <img class='sgr_emo hide' src="sad_sgr.png">
 </div>
 <div id='smiley7'>
- <img id='smile_emo' src="teeth.png">
- <img id='sgr_emo' src="teeth_sgr.jpg">
+ <img class='smile_emo' src="teeth.png">
+ <img class='sgr_emo hide' src="teeth_sgr.jpg">
 </div>
 <div id='smiley8'>
- <img id='smile_emo' src="yo.gif">
- <img id='sgr_emo' src="yo_sgr.jpg">
+ <img class='smile_emo' src="yo.gif">
+ <img class='sgr_emo hide' src="yo_sgr.jpg">
 </div>
 <div id='smiley9'>
- <img id='smile_emo' src="toungue_out.jpg">
- <img id='sgr_emo' src="toungue_out_sgr.jpg">
+ <img class='smile_emo' src="toungue_out.jpg">
+ <img class='sgr_emo hide' src="toungue_out_sgr.jpg">
 </div>
+<div id='smiley10'>
+ <img class='smile_emo' src="grad.gif">
+ <img class='sgr_emo hide' src="grad_sgr.jpg">
+</div>
+</div>
+<script type="text/javascript">
+function toggleChild(x) {
+	for (var i =0 ; i<x.children.length ;i++) {
+	  x.children[i].classList.toggle('hide');
+	}
+}
+function doThis(i) {
+	return function(e){
+		console.log('hi'+i);
+		console.log(e.target);
+		var x = e.target.parentElement;
+		toggleChild(x);
+	}
+}
+var text = 'smiley';
+for (var i = 1 ; i < 11; i++) {
+	var newT = text+i;
+	var divt = document.getElementById(newT);
+	divt.addEventListener('click', doThis(i));
+}
+</script>
 </body>
 </html>
