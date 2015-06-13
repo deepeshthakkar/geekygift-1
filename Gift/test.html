@@ -1,15 +1,25 @@
 <!DOCTYPE>
 <html>
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <style type="text/css">
+body {
+  background-image: url("bg.jpg");
+}
 #mainframe div > img {
 	width: 100px;
 	height: 100px;
 	position: absolute;
 }
-#mainframe {
-	width: 700px;
-	height: 700px;
+#mainframe audio{
+  transform: translate(506px,27px);
+}
+#click {
+	transform: translate(136px,68px) rotate(-5deg);
+	position: absolute;
+}
+#mainframe #click img {
+	width: 150px;
 }
 .hide {
 	display: none;
@@ -17,6 +27,13 @@
 #mainframe h1 img {
   transform: translate(513px,376px);
 }
+#mainframe h1 img#hold {
+    width:350px;
+    position: absolute;
+    right: 100%;
+    display: none;
+    z-index: 10;
+} 
 #smiley1 img {
   transform: translate(593px,-53px);
 }
@@ -52,15 +69,25 @@ transform: translate(791px,433px);
 </head>
 <body>
 <div id='mainframe'>
+<audio id='bdaysong' controls>
+  <source src="song.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<div id='click'>
+ <img src="click.png">
+</div>
 <h1>
- <img src="hpybdy.gif">
+ <img id='maintext' src="hpybdy.gif">
+</h1>
+<h1>
+ <img id='hold' src="hold.jpg">
 </h1>
 <div id='smiley1'>
  <img class='smile_emo' src="aankh_maare.jpeg">
  <img class='sgr_emo hide' src="aankh-maare_sgr.PNG">
 </div>
 <div id='smiley2'>
- <img class='smile_emo' src="coffee.PNG">
+ <img class='smile_emo' src="coffee.png">
  <img class='sgr_emo hide' src="coffee_sgr.jpg">
 </div>
 <div id='smiley3'>
@@ -80,7 +107,7 @@ transform: translate(791px,433px);
  <img class='sgr_emo hide' src="sad_sgr.PNG">
 </div>
 <div id='smiley7'>
- <img class='smile_emo' src="teeth.PNG">
+ <img class='smile_emo' src="teeth.png">
  <img class='sgr_emo hide' src="teeth_sgr.jpg">
 </div>
 <div id='smiley8'>
@@ -97,6 +124,15 @@ transform: translate(791px,433px);
 </div>
 </div>
 <script type="text/javascript">
+var sng = document.getElementById('bdaysong');
+sng.play();
+
+$('#maintext').click(function() {
+	console.log('show');
+$('#hold').show();	
+$('#hold').animate({ right: 500 }, 8000);
+});
+
 function toggleChild(x) {
 	for (var i =0 ; i<x.children.length ;i++) {
 	  x.children[i].classList.toggle('hide');
